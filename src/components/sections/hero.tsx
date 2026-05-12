@@ -1,7 +1,7 @@
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Reveal } from "./reveal";
+import { Reveal } from "../reveal";
 
 export function Hero() {
   return (
