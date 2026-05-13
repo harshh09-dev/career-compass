@@ -7,6 +7,7 @@ import { Solution } from "@/components/sections/solution";
 import { Tracks } from "@/components/sections/tracks";
 import { Process } from "@/components/sections/process";
 import { Partners } from "@/components/sections/partners";
+import { ByTheNumbers } from "@/components/sections/by-the-numbers";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Pricing } from "@/components/sections/pricing";
 import { FAQ } from "@/components/sections/faq";
