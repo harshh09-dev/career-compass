@@ -4,7 +4,7 @@ import { Reveal } from "../reveal";
 
 export function FinalCTA() {
   return (
-    <section className="grain relative overflow-hidden bg-ink py-32 text-primary-foreground lg:py-40">
+    <section className="grain relative overflow-hidden bg-ink py-24 text-primary-foreground lg:py-28">
       <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
         <Reveal>
           <div className="eyebrow text-primary-foreground/60">09 — Next Cohort</div>

@@ -13,10 +13,22 @@ const links = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 border-b border-[oklch(0_0_0/0.06)] bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
+    <>
+      <div className="border-b border-[oklch(0_0_0/0.06)] bg-ink text-primary-foreground">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 text-[11px] uppercase tracking-[0.16em] lg:px-12">
+          <span className="flex items-center gap-2 opacity-90">
+            <span className="inline-flex h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
+            Cohort 14 — 19 seats remaining · Closes Jan 28
+          </span>
+          <Link to="/apply" className="hidden items-center gap-1 text-gold hover:underline sm:inline-flex">
+            Reserve a seat →
+          </Link>
+        </div>
+      </div>
+      <header className="sticky top-0 z-50 border-b border-[oklch(0_0_0/0.06)] bg-background/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-2xl font-semibold tracking-tight text-ink">Atelier<span className="text-gold">·</span>Careers</span>
+          <span className="font-display text-2xl font-semibold tracking-tight text-ink">S<span className="text-gold">.</span>Nehra</span>
         </Link>
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
@@ -80,7 +92,8 @@ export function SiteHeader() {
             </div>
           </div>
         </div>
-      )}
-    </header>
+        )}
+      </header>
+    </>
   );
 }

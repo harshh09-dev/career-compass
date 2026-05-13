@@ -15,7 +15,7 @@ const includes = [
 
 export function Pricing() {
   return (
-    <section className="border-b border-[oklch(0_0_0/0.06)] py-24 lg:py-32">
+    <section className="border-b border-[oklch(0_0_0/0.06)] py-20 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <Reveal className="mx-auto max-w-2xl text-center">
           <div className="eyebrow">07 — Pricing</div>
@@ -32,7 +32,7 @@ export function Pricing() {
             <div className="grid lg:grid-cols-[1.2fr_1fr]">
               <div className="border-b border-[oklch(0_0_0/0.08)] p-10 lg:border-b-0 lg:border-r">
                 <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Full Program</div>
-                <h3 className="mt-3 font-display text-4xl text-ink">Atelier Cohort</h3>
+                <h3 className="mt-3 font-display text-4xl text-ink">S.Nehra Cohort</h3>
                 <div className="mt-8 flex items-baseline gap-3">
                   <span className="font-display text-6xl text-ink">₹89,000</span>
                   <span className="text-sm text-muted-foreground line-through">₹1,20,000</span>

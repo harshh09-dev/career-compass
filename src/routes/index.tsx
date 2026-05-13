@@ -7,6 +7,7 @@ import { Solution } from "@/components/sections/solution";
 import { Tracks } from "@/components/sections/tracks";
 import { Process } from "@/components/sections/process";
 import { Partners } from "@/components/sections/partners";
+import { ByTheNumbers } from "@/components/sections/by-the-numbers";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Pricing } from "@/components/sections/pricing";
 import { FAQ } from "@/components/sections/faq";
@@ -15,9 +16,9 @@ import { FinalCTA } from "@/components/sections/final-cta";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Atelier Careers — Stop Applying. Start Getting Hired." },
+      { title: "S.Nehra — Stop Applying. Start Getting Hired." },
       { name: "description", content: "A 12-week premium placement consultancy. We train, certify, and place talent into careers worth keeping. Sales Excellence & Customer Support tracks." },
-      { property: "og:title", content: "Atelier Careers — Stop Applying. Start Getting Hired." },
+      { property: "og:title", content: "S.Nehra — Stop Applying. Start Getting Hired." },
       { property: "og:description", content: "Premium placement consultancy with a written job guarantee. 94% placement rate. 180+ hiring partners." },
     ],
   }),
@@ -35,6 +36,7 @@ function Index() {
         <Tracks />
         <Process />
         <Partners />
+        <ByTheNumbers />
         <Testimonials />
         <Pricing />
         <FAQ />

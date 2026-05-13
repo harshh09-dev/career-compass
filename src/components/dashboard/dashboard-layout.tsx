@@ -26,7 +26,7 @@ export function DashboardLayout() {
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 border-r border-[oklch(0_0_0/0.06)] bg-sidebar lg:flex lg:flex-col">
         <div className="px-6 py-6">
           <Link to="/" className="font-display text-xl font-semibold text-ink">
-            Atelier<span className="text-gold">·</span>Careers
+            S<span className="text-gold">.</span>Nehra
           </Link>
         </div>
         <nav className="flex-1 space-y-1 px-3">
@@ -66,7 +66,7 @@ export function DashboardLayout() {
           <div className="fixed inset-0 z-40 bg-ink/50 backdrop-blur-sm lg:hidden" onClick={() => setOpen(false)} />
           <aside className="fixed inset-y-0 left-0 z-50 w-72 bg-sidebar p-4 shadow-elevated lg:hidden">
             <div className="mb-4 flex items-center justify-between px-2">
-              <span className="font-display text-lg font-semibold">Atelier<span className="text-gold">·</span>Careers</span>
+              <span className="font-display text-lg font-semibold">S<span className="text-gold">.</span>Nehra</span>
               <button onClick={() => setOpen(false)}><X className="h-5 w-5" /></button>
             </div>
             <nav className="space-y-1">

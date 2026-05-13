@@ -8,7 +8,7 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="border-b border-[oklch(0_0_0/0.06)] bg-surface/40 py-24 lg:py-32">
+    <section className="border-b border-[oklch(0_0_0/0.06)] bg-surface/40 py-20 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <Reveal className="max-w-3xl">
           <div className="eyebrow">04 — The Process</div>
