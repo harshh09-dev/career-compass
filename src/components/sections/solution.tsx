@@ -13,7 +13,7 @@ const benefits = [
 
 export function Solution() {
   return (
-    <section className="relative overflow-hidden bg-ink py-20 text-primary-foreground lg:py-32">
+    <section className="relative overflow-hidden bg-ink py-20 text-primary-foreground lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-24 lg:px-12">
         <Reveal>
           <div className="eyebrow text-primary-foreground/60">02 — The Solution</div>
