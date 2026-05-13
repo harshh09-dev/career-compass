@@ -36,6 +36,7 @@ function Index() {
         <Tracks />
         <Process />
         <Partners />
+        <ByTheNumbers />
         <Testimonials />
         <Pricing />
         <FAQ />
