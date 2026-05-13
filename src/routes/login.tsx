@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { AuthShell, AuthField } from "@/components/auth/auth-shell";
 
 export const Route = createFileRoute("/login")({
-  head: () => ({ meta: [{ title: "Sign in — Atelier Careers" }] }),
+  head: () => ({ meta: [{ title: "Sign in — S.Nehra" }] }),
   component: Login,
 });
 

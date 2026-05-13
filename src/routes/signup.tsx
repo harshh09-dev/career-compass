@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AuthShell, AuthField } from "@/components/auth/auth-shell";
 
 export const Route = createFileRoute("/signup")({
-  head: () => ({ meta: [{ title: "Create account — Atelier Careers" }] }),
+  head: () => ({ meta: [{ title: "Create account — S.Nehra" }] }),
   component: Signup,
 });
 

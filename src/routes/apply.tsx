@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Upload, BarChart3, Headphones } from "lucide-react";
 
 export const Route = createFileRoute("/apply")({
-  head: () => ({ meta: [{ title: "Apply — Atelier Careers" }] }),
+  head: () => ({ meta: [{ title: "Apply — S.Nehra" }] }),
   component: Apply,
 });
 
@@ -22,7 +22,7 @@ function Apply() {
       <header className="border-b border-[oklch(0_0_0/0.06)] bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-10">
           <Link to="/" className="font-display text-xl font-semibold text-ink">
-            Atelier<span className="text-gold">·</span>Careers
+            S<span className="text-gold">.</span>Nehra
           </Link>
           <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
             Step {Math.min(step + 1, last)} of {last}
