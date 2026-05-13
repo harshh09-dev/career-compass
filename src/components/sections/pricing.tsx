@@ -15,7 +15,7 @@ const includes = [
 
 export function Pricing() {
   return (
-    <section className="border-b border-[oklch(0_0_0/0.06)] py-24 lg:py-32">
+    <section className="border-b border-[oklch(0_0_0/0.06)] py-20 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <Reveal className="mx-auto max-w-2xl text-center">
           <div className="eyebrow">07 — Pricing</div>
