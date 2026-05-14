@@ -18,6 +18,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ApplyRouteImport } from './routes/apply'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,10 @@ import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile
 import { Route as DashboardJobsRouteImport } from './routes/dashboard.jobs'
 import { Route as DashboardInterviewsRouteImport } from './routes/dashboard.interviews'
 import { Route as DashboardCertificatesRouteImport } from './routes/dashboard.certificates'
+import { Route as DashboardBillingRouteImport } from './routes/dashboard.billing'
+import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
+import { Route as CheckoutPendingRouteImport } from './routes/checkout.pending'
+import { Route as CheckoutFailedRouteImport } from './routes/checkout.failed'
 
 const VerifyRoute = VerifyRouteImport.update({
   id: '/verify',
@@ -73,6 +78,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplyRoute = ApplyRouteImport.update({
@@ -130,11 +140,32 @@ const DashboardCertificatesRoute = DashboardCertificatesRouteImport.update({
   path: '/certificates',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardBillingRoute = DashboardBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => CheckoutRoute,
+} as any)
+const CheckoutPendingRoute = CheckoutPendingRouteImport.update({
+  id: '/pending',
+  path: '/pending',
+  getParentRoute: () => CheckoutRoute,
+} as any)
+const CheckoutFailedRoute = CheckoutFailedRouteImport.update({
+  id: '/failed',
+  path: '/failed',
+  getParentRoute: () => CheckoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/apply': typeof ApplyRoute
+  '/checkout': typeof CheckoutRouteWithChildren
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
@@ -144,6 +175,10 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/tracks': typeof TracksRoute
   '/verify': typeof VerifyRoute
+  '/checkout/failed': typeof CheckoutFailedRoute
+  '/checkout/pending': typeof CheckoutPendingRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/certificates': typeof DashboardCertificatesRoute
   '/dashboard/interviews': typeof DashboardInterviewsRoute
   '/dashboard/jobs': typeof DashboardJobsRoute
@@ -157,6 +192,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/apply': typeof ApplyRoute
+  '/checkout': typeof CheckoutRouteWithChildren
   '/contact': typeof ContactRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
@@ -165,6 +201,10 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/tracks': typeof TracksRoute
   '/verify': typeof VerifyRoute
+  '/checkout/failed': typeof CheckoutFailedRoute
+  '/checkout/pending': typeof CheckoutPendingRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/certificates': typeof DashboardCertificatesRoute
   '/dashboard/interviews': typeof DashboardInterviewsRoute
   '/dashboard/jobs': typeof DashboardJobsRoute
@@ -179,6 +219,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/apply': typeof ApplyRoute
+  '/checkout': typeof CheckoutRouteWithChildren
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
@@ -188,6 +229,10 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/tracks': typeof TracksRoute
   '/verify': typeof VerifyRoute
+  '/checkout/failed': typeof CheckoutFailedRoute
+  '/checkout/pending': typeof CheckoutPendingRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/certificates': typeof DashboardCertificatesRoute
   '/dashboard/interviews': typeof DashboardInterviewsRoute
   '/dashboard/jobs': typeof DashboardJobsRoute
@@ -203,6 +248,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/apply'
+    | '/checkout'
     | '/contact'
     | '/dashboard'
     | '/forgot-password'
@@ -212,6 +258,10 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tracks'
     | '/verify'
+    | '/checkout/failed'
+    | '/checkout/pending'
+    | '/checkout/success'
+    | '/dashboard/billing'
     | '/dashboard/certificates'
     | '/dashboard/interviews'
     | '/dashboard/jobs'
@@ -225,6 +275,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/apply'
+    | '/checkout'
     | '/contact'
     | '/forgot-password'
     | '/login'
@@ -233,6 +284,10 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tracks'
     | '/verify'
+    | '/checkout/failed'
+    | '/checkout/pending'
+    | '/checkout/success'
+    | '/dashboard/billing'
     | '/dashboard/certificates'
     | '/dashboard/interviews'
     | '/dashboard/jobs'
@@ -246,6 +301,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/apply'
+    | '/checkout'
     | '/contact'
     | '/dashboard'
     | '/forgot-password'
@@ -255,6 +311,10 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tracks'
     | '/verify'
+    | '/checkout/failed'
+    | '/checkout/pending'
+    | '/checkout/success'
+    | '/dashboard/billing'
     | '/dashboard/certificates'
     | '/dashboard/interviews'
     | '/dashboard/jobs'
@@ -269,6 +329,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ApplyRoute: typeof ApplyRoute
+  CheckoutRoute: typeof CheckoutRouteWithChildren
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
@@ -343,6 +404,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apply': {
@@ -422,10 +490,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardCertificatesRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/billing': {
+      id: '/dashboard/billing'
+      path: '/billing'
+      fullPath: '/dashboard/billing'
+      preLoaderRoute: typeof DashboardBillingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/checkout/success': {
+      id: '/checkout/success'
+      path: '/success'
+      fullPath: '/checkout/success'
+      preLoaderRoute: typeof CheckoutSuccessRouteImport
+      parentRoute: typeof CheckoutRoute
+    }
+    '/checkout/pending': {
+      id: '/checkout/pending'
+      path: '/pending'
+      fullPath: '/checkout/pending'
+      preLoaderRoute: typeof CheckoutPendingRouteImport
+      parentRoute: typeof CheckoutRoute
+    }
+    '/checkout/failed': {
+      id: '/checkout/failed'
+      path: '/failed'
+      fullPath: '/checkout/failed'
+      preLoaderRoute: typeof CheckoutFailedRouteImport
+      parentRoute: typeof CheckoutRoute
+    }
   }
 }
 
+interface CheckoutRouteChildren {
+  CheckoutFailedRoute: typeof CheckoutFailedRoute
+  CheckoutPendingRoute: typeof CheckoutPendingRoute
+  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
+}
+
+const CheckoutRouteChildren: CheckoutRouteChildren = {
+  CheckoutFailedRoute: CheckoutFailedRoute,
+  CheckoutPendingRoute: CheckoutPendingRoute,
+  CheckoutSuccessRoute: CheckoutSuccessRoute,
+}
+
+const CheckoutRouteWithChildren = CheckoutRoute._addFileChildren(
+  CheckoutRouteChildren,
+)
+
 interface DashboardRouteChildren {
+  DashboardBillingRoute: typeof DashboardBillingRoute
   DashboardCertificatesRoute: typeof DashboardCertificatesRoute
   DashboardInterviewsRoute: typeof DashboardInterviewsRoute
   DashboardJobsRoute: typeof DashboardJobsRoute
@@ -437,6 +550,7 @@ interface DashboardRouteChildren {
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardBillingRoute: DashboardBillingRoute,
   DashboardCertificatesRoute: DashboardCertificatesRoute,
   DashboardInterviewsRoute: DashboardInterviewsRoute,
   DashboardJobsRoute: DashboardJobsRoute,
@@ -455,6 +569,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ApplyRoute: ApplyRoute,
+  CheckoutRoute: CheckoutRouteWithChildren,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRouteWithChildren,
   ForgotPasswordRoute: ForgotPasswordRoute,
