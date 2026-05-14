@@ -20,9 +20,11 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ApplyRouteImport } from './routes/apply'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as DashboardTrainingRouteImport } from './routes/dashboard.training'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
 import { Route as DashboardResumeRouteImport } from './routes/dashboard.resume'
@@ -35,6 +37,11 @@ import { Route as DashboardBillingRouteImport } from './routes/dashboard.billing
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as CheckoutPendingRouteImport } from './routes/checkout.pending'
 import { Route as CheckoutFailedRouteImport } from './routes/checkout.failed'
+import { Route as AdminRolesRouteImport } from './routes/admin.roles'
+import { Route as AdminPipelineRouteImport } from './routes/admin.pipeline'
+import { Route as AdminPaymentsRouteImport } from './routes/admin.payments'
+import { Route as AdminCmsRouteImport } from './routes/admin.cms'
+import { Route as AdminCandidatesRouteImport } from './routes/admin.candidates'
 import { Route as DashboardDsaSlugRouteImport } from './routes/dashboard.dsa.$slug'
 
 const VerifyRoute = VerifyRouteImport.update({
@@ -92,6 +99,11 @@ const ApplyRoute = ApplyRouteImport.update({
   path: '/apply',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -106,6 +118,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => DashboardRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
 } as any)
 const DashboardTrainingRoute = DashboardTrainingRouteImport.update({
   id: '/training',
@@ -167,6 +184,31 @@ const CheckoutFailedRoute = CheckoutFailedRouteImport.update({
   path: '/failed',
   getParentRoute: () => CheckoutRoute,
 } as any)
+const AdminRolesRoute = AdminRolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPipelineRoute = AdminPipelineRouteImport.update({
+  id: '/pipeline',
+  path: '/pipeline',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPaymentsRoute = AdminPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCmsRoute = AdminCmsRouteImport.update({
+  id: '/cms',
+  path: '/cms',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCandidatesRoute = AdminCandidatesRouteImport.update({
+  id: '/candidates',
+  path: '/candidates',
+  getParentRoute: () => AdminRoute,
+} as any)
 const DashboardDsaSlugRoute = DashboardDsaSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -176,6 +218,7 @@ const DashboardDsaSlugRoute = DashboardDsaSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/apply': typeof ApplyRoute
   '/checkout': typeof CheckoutRouteWithChildren
   '/contact': typeof ContactRoute
@@ -187,6 +230,11 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/tracks': typeof TracksRoute
   '/verify': typeof VerifyRoute
+  '/admin/candidates': typeof AdminCandidatesRoute
+  '/admin/cms': typeof AdminCmsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/pipeline': typeof AdminPipelineRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/checkout/failed': typeof CheckoutFailedRoute
   '/checkout/pending': typeof CheckoutPendingRoute
   '/checkout/success': typeof CheckoutSuccessRoute
@@ -199,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/resume': typeof DashboardResumeRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/training': typeof DashboardTrainingRoute
+  '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/dsa/$slug': typeof DashboardDsaSlugRoute
 }
@@ -215,6 +264,11 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/tracks': typeof TracksRoute
   '/verify': typeof VerifyRoute
+  '/admin/candidates': typeof AdminCandidatesRoute
+  '/admin/cms': typeof AdminCmsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/pipeline': typeof AdminPipelineRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/checkout/failed': typeof CheckoutFailedRoute
   '/checkout/pending': typeof CheckoutPendingRoute
   '/checkout/success': typeof CheckoutSuccessRoute
@@ -227,6 +281,7 @@ export interface FileRoutesByTo {
   '/dashboard/resume': typeof DashboardResumeRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/training': typeof DashboardTrainingRoute
+  '/admin': typeof AdminIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/dsa/$slug': typeof DashboardDsaSlugRoute
 }
@@ -234,6 +289,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/apply': typeof ApplyRoute
   '/checkout': typeof CheckoutRouteWithChildren
   '/contact': typeof ContactRoute
@@ -245,6 +301,11 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/tracks': typeof TracksRoute
   '/verify': typeof VerifyRoute
+  '/admin/candidates': typeof AdminCandidatesRoute
+  '/admin/cms': typeof AdminCmsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/pipeline': typeof AdminPipelineRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/checkout/failed': typeof CheckoutFailedRoute
   '/checkout/pending': typeof CheckoutPendingRoute
   '/checkout/success': typeof CheckoutSuccessRoute
@@ -257,6 +318,7 @@ export interface FileRoutesById {
   '/dashboard/resume': typeof DashboardResumeRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/training': typeof DashboardTrainingRoute
+  '/admin/': typeof AdminIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/dsa/$slug': typeof DashboardDsaSlugRoute
 }
@@ -265,6 +327,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/apply'
     | '/checkout'
     | '/contact'
@@ -276,6 +339,11 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tracks'
     | '/verify'
+    | '/admin/candidates'
+    | '/admin/cms'
+    | '/admin/payments'
+    | '/admin/pipeline'
+    | '/admin/roles'
     | '/checkout/failed'
     | '/checkout/pending'
     | '/checkout/success'
@@ -288,6 +356,7 @@ export interface FileRouteTypes {
     | '/dashboard/resume'
     | '/dashboard/settings'
     | '/dashboard/training'
+    | '/admin/'
     | '/dashboard/'
     | '/dashboard/dsa/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -304,6 +373,11 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tracks'
     | '/verify'
+    | '/admin/candidates'
+    | '/admin/cms'
+    | '/admin/payments'
+    | '/admin/pipeline'
+    | '/admin/roles'
     | '/checkout/failed'
     | '/checkout/pending'
     | '/checkout/success'
@@ -316,12 +390,14 @@ export interface FileRouteTypes {
     | '/dashboard/resume'
     | '/dashboard/settings'
     | '/dashboard/training'
+    | '/admin'
     | '/dashboard'
     | '/dashboard/dsa/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/apply'
     | '/checkout'
     | '/contact'
@@ -333,6 +409,11 @@ export interface FileRouteTypes {
     | '/signup'
     | '/tracks'
     | '/verify'
+    | '/admin/candidates'
+    | '/admin/cms'
+    | '/admin/payments'
+    | '/admin/pipeline'
+    | '/admin/roles'
     | '/checkout/failed'
     | '/checkout/pending'
     | '/checkout/success'
@@ -345,6 +426,7 @@ export interface FileRouteTypes {
     | '/dashboard/resume'
     | '/dashboard/settings'
     | '/dashboard/training'
+    | '/admin/'
     | '/dashboard/'
     | '/dashboard/dsa/$slug'
   fileRoutesById: FileRoutesById
@@ -352,6 +434,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ApplyRoute: typeof ApplyRoute
   CheckoutRoute: typeof CheckoutRouteWithChildren
   ContactRoute: typeof ContactRoute
@@ -444,6 +527,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApplyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -464,6 +554,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/dashboard/training': {
       id: '/dashboard/training'
@@ -549,6 +646,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutFailedRouteImport
       parentRoute: typeof CheckoutRoute
     }
+    '/admin/roles': {
+      id: '/admin/roles'
+      path: '/roles'
+      fullPath: '/admin/roles'
+      preLoaderRoute: typeof AdminRolesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pipeline': {
+      id: '/admin/pipeline'
+      path: '/pipeline'
+      fullPath: '/admin/pipeline'
+      preLoaderRoute: typeof AdminPipelineRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/payments': {
+      id: '/admin/payments'
+      path: '/payments'
+      fullPath: '/admin/payments'
+      preLoaderRoute: typeof AdminPaymentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/cms': {
+      id: '/admin/cms'
+      path: '/cms'
+      fullPath: '/admin/cms'
+      preLoaderRoute: typeof AdminCmsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/candidates': {
+      id: '/admin/candidates'
+      path: '/candidates'
+      fullPath: '/admin/candidates'
+      preLoaderRoute: typeof AdminCandidatesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/dashboard/dsa/$slug': {
       id: '/dashboard/dsa/$slug'
       path: '/$slug'
@@ -558,6 +690,26 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AdminRouteChildren {
+  AdminCandidatesRoute: typeof AdminCandidatesRoute
+  AdminCmsRoute: typeof AdminCmsRoute
+  AdminPaymentsRoute: typeof AdminPaymentsRoute
+  AdminPipelineRoute: typeof AdminPipelineRoute
+  AdminRolesRoute: typeof AdminRolesRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminCandidatesRoute: AdminCandidatesRoute,
+  AdminCmsRoute: AdminCmsRoute,
+  AdminPaymentsRoute: AdminPaymentsRoute,
+  AdminPipelineRoute: AdminPipelineRoute,
+  AdminRolesRoute: AdminRolesRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface CheckoutRouteChildren {
   CheckoutFailedRoute: typeof CheckoutFailedRoute
@@ -620,6 +772,7 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   ApplyRoute: ApplyRoute,
   CheckoutRoute: CheckoutRouteWithChildren,
   ContactRoute: ContactRoute,
