@@ -29,11 +29,13 @@ import { Route as DashboardResumeRouteImport } from './routes/dashboard.resume'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
 import { Route as DashboardJobsRouteImport } from './routes/dashboard.jobs'
 import { Route as DashboardInterviewsRouteImport } from './routes/dashboard.interviews'
+import { Route as DashboardDsaRouteImport } from './routes/dashboard.dsa'
 import { Route as DashboardCertificatesRouteImport } from './routes/dashboard.certificates'
 import { Route as DashboardBillingRouteImport } from './routes/dashboard.billing'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as CheckoutPendingRouteImport } from './routes/checkout.pending'
 import { Route as CheckoutFailedRouteImport } from './routes/checkout.failed'
+import { Route as DashboardDsaSlugRouteImport } from './routes/dashboard.dsa.$slug'
 
 const VerifyRoute = VerifyRouteImport.update({
   id: '/verify',
@@ -135,6 +137,11 @@ const DashboardInterviewsRoute = DashboardInterviewsRouteImport.update({
   path: '/interviews',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardDsaRoute = DashboardDsaRouteImport.update({
+  id: '/dsa',
+  path: '/dsa',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardCertificatesRoute = DashboardCertificatesRouteImport.update({
   id: '/certificates',
   path: '/certificates',
@@ -160,6 +167,11 @@ const CheckoutFailedRoute = CheckoutFailedRouteImport.update({
   path: '/failed',
   getParentRoute: () => CheckoutRoute,
 } as any)
+const DashboardDsaSlugRoute = DashboardDsaSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => DashboardDsaRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -180,6 +192,7 @@ export interface FileRoutesByFullPath {
   '/checkout/success': typeof CheckoutSuccessRoute
   '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/certificates': typeof DashboardCertificatesRoute
+  '/dashboard/dsa': typeof DashboardDsaRouteWithChildren
   '/dashboard/interviews': typeof DashboardInterviewsRoute
   '/dashboard/jobs': typeof DashboardJobsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -187,6 +200,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/training': typeof DashboardTrainingRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/dsa/$slug': typeof DashboardDsaSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -206,6 +220,7 @@ export interface FileRoutesByTo {
   '/checkout/success': typeof CheckoutSuccessRoute
   '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/certificates': typeof DashboardCertificatesRoute
+  '/dashboard/dsa': typeof DashboardDsaRouteWithChildren
   '/dashboard/interviews': typeof DashboardInterviewsRoute
   '/dashboard/jobs': typeof DashboardJobsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -213,6 +228,7 @@ export interface FileRoutesByTo {
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/training': typeof DashboardTrainingRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/dsa/$slug': typeof DashboardDsaSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -234,6 +250,7 @@ export interface FileRoutesById {
   '/checkout/success': typeof CheckoutSuccessRoute
   '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/certificates': typeof DashboardCertificatesRoute
+  '/dashboard/dsa': typeof DashboardDsaRouteWithChildren
   '/dashboard/interviews': typeof DashboardInterviewsRoute
   '/dashboard/jobs': typeof DashboardJobsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -241,6 +258,7 @@ export interface FileRoutesById {
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/training': typeof DashboardTrainingRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/dsa/$slug': typeof DashboardDsaSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -263,6 +281,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/dashboard/billing'
     | '/dashboard/certificates'
+    | '/dashboard/dsa'
     | '/dashboard/interviews'
     | '/dashboard/jobs'
     | '/dashboard/profile'
@@ -270,6 +289,7 @@ export interface FileRouteTypes {
     | '/dashboard/settings'
     | '/dashboard/training'
     | '/dashboard/'
+    | '/dashboard/dsa/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -289,6 +309,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/dashboard/billing'
     | '/dashboard/certificates'
+    | '/dashboard/dsa'
     | '/dashboard/interviews'
     | '/dashboard/jobs'
     | '/dashboard/profile'
@@ -296,6 +317,7 @@ export interface FileRouteTypes {
     | '/dashboard/settings'
     | '/dashboard/training'
     | '/dashboard'
+    | '/dashboard/dsa/$slug'
   id:
     | '__root__'
     | '/'
@@ -316,6 +338,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/dashboard/billing'
     | '/dashboard/certificates'
+    | '/dashboard/dsa'
     | '/dashboard/interviews'
     | '/dashboard/jobs'
     | '/dashboard/profile'
@@ -323,6 +346,7 @@ export interface FileRouteTypes {
     | '/dashboard/settings'
     | '/dashboard/training'
     | '/dashboard/'
+    | '/dashboard/dsa/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -483,6 +507,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardInterviewsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/dsa': {
+      id: '/dashboard/dsa'
+      path: '/dsa'
+      fullPath: '/dashboard/dsa'
+      preLoaderRoute: typeof DashboardDsaRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/certificates': {
       id: '/dashboard/certificates'
       path: '/certificates'
@@ -518,6 +549,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutFailedRouteImport
       parentRoute: typeof CheckoutRoute
     }
+    '/dashboard/dsa/$slug': {
+      id: '/dashboard/dsa/$slug'
+      path: '/$slug'
+      fullPath: '/dashboard/dsa/$slug'
+      preLoaderRoute: typeof DashboardDsaSlugRouteImport
+      parentRoute: typeof DashboardDsaRoute
+    }
   }
 }
 
@@ -537,9 +575,22 @@ const CheckoutRouteWithChildren = CheckoutRoute._addFileChildren(
   CheckoutRouteChildren,
 )
 
+interface DashboardDsaRouteChildren {
+  DashboardDsaSlugRoute: typeof DashboardDsaSlugRoute
+}
+
+const DashboardDsaRouteChildren: DashboardDsaRouteChildren = {
+  DashboardDsaSlugRoute: DashboardDsaSlugRoute,
+}
+
+const DashboardDsaRouteWithChildren = DashboardDsaRoute._addFileChildren(
+  DashboardDsaRouteChildren,
+)
+
 interface DashboardRouteChildren {
   DashboardBillingRoute: typeof DashboardBillingRoute
   DashboardCertificatesRoute: typeof DashboardCertificatesRoute
+  DashboardDsaRoute: typeof DashboardDsaRouteWithChildren
   DashboardInterviewsRoute: typeof DashboardInterviewsRoute
   DashboardJobsRoute: typeof DashboardJobsRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
@@ -552,6 +603,7 @@ interface DashboardRouteChildren {
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardBillingRoute: DashboardBillingRoute,
   DashboardCertificatesRoute: DashboardCertificatesRoute,
+  DashboardDsaRoute: DashboardDsaRouteWithChildren,
   DashboardInterviewsRoute: DashboardInterviewsRoute,
   DashboardJobsRoute: DashboardJobsRoute,
   DashboardProfileRoute: DashboardProfileRoute,
@@ -583,3 +635,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
