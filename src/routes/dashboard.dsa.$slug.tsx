@@ -48,7 +48,7 @@ function ProblemPage() {
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <span className={`rounded-full border px-2.5 py-0.5 text-[10px] uppercase tracking-[0.14em] ${levelPill[problem.level]}`}>{problem.level}</span>
               <span className="rounded-full border border-border px-2.5 py-0.5 text-[10px] text-muted-foreground">{problem.timer} min target</span>
-              {problem.tags.map(t => (
+              {problem.tags.map((t: string) => (
                 <span key={t} className="inline-flex items-center gap-1 rounded-full bg-muted px-2 py-0.5 text-[10px] uppercase tracking-[0.1em] text-muted-foreground">
                   <Tag className="h-2.5 w-2.5" /> {t}
                 </span>
@@ -93,7 +93,7 @@ function ProblemPage() {
             <p className="text-foreground">Time: O(n). Space: O(1). Avoid sorting unless the problem permits O(n log n).</p>
             <h3 className="font-display text-base text-ink">Asked at</h3>
             <div className="not-prose flex flex-wrap gap-2">
-              {problem.companies.map(c => (
+              {problem.companies.map((c: string) => (
                 <span key={c} className="inline-flex items-center gap-1 rounded-full bg-ink px-2.5 py-1 text-[10px] uppercase tracking-[0.12em] text-gold">
                   <Building2 className="h-3 w-3" /> {c}
                 </span>
