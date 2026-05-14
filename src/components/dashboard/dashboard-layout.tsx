@@ -2,7 +2,7 @@ import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   LayoutGrid, GraduationCap, MessagesSquare, Briefcase, FileText,
-  Award, User, Settings, Bell, Search, Menu, X, ChevronRight, LogOut,
+  Award, User, Settings, Bell, Search, Menu, X, ChevronRight, LogOut, Receipt,
 } from "lucide-react";
 
 const nav = [
@@ -12,6 +12,7 @@ const nav = [
   { to: "/dashboard/jobs", label: "Job Applications", icon: Briefcase },
   { to: "/dashboard/resume", label: "Resume Builder", icon: FileText },
   { to: "/dashboard/certificates", label: "Certificates", icon: Award },
+  { to: "/dashboard/billing", label: "Billing", icon: Receipt },
   { to: "/dashboard/profile", label: "Profile", icon: User },
   { to: "/dashboard/settings", label: "Settings", icon: Settings },
 ] as const;
