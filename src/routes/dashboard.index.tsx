@@ -159,6 +159,34 @@ function Overview() {
           </div>
         </Reveal>
       </div>
+
+      {/* Tuition / payment status */}
+      <Reveal className="mt-8">
+        <div className="overflow-hidden rounded-[24px] border border-[oklch(0_0_0/0.06)] bg-surface shadow-soft">
+          <div className="grid gap-0 lg:grid-cols-[1.4fr_1fr_1fr_auto]">
+            <div className="border-b border-[oklch(0_0_0/0.06)] bg-ink p-7 text-primary-foreground lg:border-b-0 lg:border-r">
+              <div className="eyebrow text-primary-foreground/60">Tuition status</div>
+              <div className="mt-3 font-display text-2xl">Cohort 14 · Signature</div>
+              <p className="mt-2 text-xs text-primary-foreground/60">Next installment due 01 Sep 2025. ISA activates 30 days after offer accepted.</p>
+            </div>
+            <div className="border-b border-[oklch(0_0_0/0.06)] p-7 lg:border-b-0 lg:border-r">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Paid to date</div>
+              <div className="mt-3 font-display text-3xl text-ink">₹40,120</div>
+              <div className="mt-1 text-xs text-success">2 of 3 installments cleared</div>
+            </div>
+            <div className="border-b border-[oklch(0_0_0/0.06)] p-7 lg:border-b-0 lg:border-r">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Outstanding</div>
+              <div className="mt-3 font-display text-3xl text-gold">₹88,500</div>
+              <div className="mt-1 text-xs text-muted-foreground">Due in 19 days</div>
+            </div>
+            <div className="flex items-center justify-center p-7">
+              <Link to="/dashboard/billing" className="inline-flex items-center gap-2 rounded-[14px] bg-gold px-5 py-3 text-sm font-medium text-ink hover:bg-gold-muted">
+                Manage billing <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Reveal>
     </div>
   );
 }
