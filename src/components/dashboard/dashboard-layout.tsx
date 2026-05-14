@@ -2,11 +2,12 @@ import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   LayoutGrid, GraduationCap, MessagesSquare, Briefcase, FileText,
-  Award, User, Settings, Bell, Search, Menu, X, ChevronRight, LogOut, Receipt,
+  Award, User, Settings, Bell, Search, Menu, X, ChevronRight, LogOut, Receipt, Code2, Shield,
 } from "lucide-react";
 
 const nav = [
   { to: "/dashboard", label: "Overview", icon: LayoutGrid },
+  { to: "/dashboard/dsa", label: "DSA Sheet", icon: Code2 },
   { to: "/dashboard/training", label: "Training", icon: GraduationCap },
   { to: "/dashboard/interviews", label: "Mock Interviews", icon: MessagesSquare },
   { to: "/dashboard/jobs", label: "Job Applications", icon: Briefcase },
@@ -15,6 +16,7 @@ const nav = [
   { to: "/dashboard/billing", label: "Billing", icon: Receipt },
   { to: "/dashboard/profile", label: "Profile", icon: User },
   { to: "/dashboard/settings", label: "Settings", icon: Settings },
+  { to: "/admin", label: "Admin Console", icon: Shield },
 ] as const;
 
 export function DashboardLayout() {
