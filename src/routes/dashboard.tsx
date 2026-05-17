@@ -1,7 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { DashboardLayout } from "@/components/dashboard/dashboard-layout";
 
-export const Route = createFileRoute("/dashboard")({
-  head: () => ({ meta: [{ title: "Dashboard — S.Nehra" }] }),
-  component: DashboardLayout,
-});
+export default DashboardLayout;

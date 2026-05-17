@@ -1,12 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { CheckCircle2, Download, ArrowRight, Sparkles } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
-export const Route = createFileRoute("/checkout/success")({
-  head: () => ({ meta: [{ title: "Payment Confirmed — S.Nehra" }] }),
-  validateSearch: (s: Record<string, unknown>) => ({ ref: typeof s.ref === "string" ? s.ref : "TXN" + Date.now() }),
-  component: SuccessPage,
-});
 
 function SuccessPage() {
   const { ref } = Route.useSearch();
@@ -58,3 +53,5 @@ function SuccessPage() {
     </div>
   );
 }
+
+export default SuccessPage;

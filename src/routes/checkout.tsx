@@ -1,12 +1,8 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Lock, Shield, CheckCircle2, ArrowLeft, CreditCard, Wallet, Building2 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
-export const Route = createFileRoute("/checkout")({
-  head: () => ({ meta: [{ title: "Checkout — S.Nehra" }] }),
-  component: CheckoutPage,
-});
 
 const plans: Record<string, { name: string; tag: string; price: number; deposit: number; isa: string }> = {
   signature: { name: "Signature Placement", tag: "Cohort 14 · Sales", price: 185000, deposit: 25000, isa: "12% of CTC for 24 months" },
@@ -34,8 +30,8 @@ function CheckoutPage() {
     setTimeout(() => {
       const seed = Math.random();
       if (seed < 0.7) nav({ to: "/checkout/success", search: { ref: "TXN" + Date.now() } as never });
-      else if (seed < 0.9) nav({ to: "/checkout/pending" });
-      else nav({ to: "/checkout/failed" });
+      else if (seed < 0.9) nav("/checkout/pending");
+      else nav("/checkout/failed");
     }, 1400);
   };
 
@@ -186,3 +182,5 @@ function CheckoutPage() {
     </div>
   );
 }
+
+export default CheckoutPage;

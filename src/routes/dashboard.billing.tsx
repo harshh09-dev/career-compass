@@ -1,12 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Download, Receipt, CreditCard, CheckCircle2, Clock3, AlertOctagon, ArrowUpRight } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 
-export const Route = createFileRoute("/dashboard/billing")({
-  head: () => ({ meta: [{ title: "Billing — S.Nehra" }] }),
-  component: BillingPage,
-});
 
 const invoices = [
   { id: "INV-2025-014", date: "12 Aug 2025", desc: "Enrollment deposit · Cohort 14", amt: 29500, status: "paid" as const },
@@ -192,3 +188,5 @@ function BillingPage() {
     </div>
   );
 }
+
+export default BillingPage;

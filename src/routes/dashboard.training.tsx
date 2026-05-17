@@ -1,12 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { CheckCircle2, Lock, PlayCircle, Clock, BookOpen, ChevronRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 
-export const Route = createFileRoute("/dashboard/training")({
-  head: () => ({ meta: [{ title: "Training — S.Nehra" }] }),
-  component: TrainingPage,
-});
 
 const tracks = [
   { id: "core", label: "Core Curriculum", count: 14, done: 9 },
@@ -151,3 +147,5 @@ export function Stub({ title, desc }: { title: string; desc: string }) {
     </div>
   );
 }
+
+export default TrainingPage;

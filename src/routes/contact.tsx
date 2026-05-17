@@ -1,18 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
 import { Mail, Phone, MapPin } from "lucide-react";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — S.Nehra" },
-      { name: "description", content: "Talk to admissions. We respond to every message within one business day." },
-    ],
-  }),
-  component: Contact,
-});
 
 function Contact() {
   return (
@@ -86,3 +77,5 @@ function Field({ label, type = "text", placeholder }: { label: string; type?: st
     </div>
   );
 }
+
+export default Contact;
