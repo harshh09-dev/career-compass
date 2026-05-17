@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Reveal } from "../reveal";
 
 const includes = [

@@ -1,11 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { FileText, CheckCircle2, AlertCircle, Download, Sparkles, Eye } from "lucide-react";
 
-export const Route = createFileRoute("/dashboard/resume")({
-  head: () => ({ meta: [{ title: "Resume Builder — S.Nehra" }] }),
-  component: ResumePage,
-});
 
 const sections = [
   { l: "Header & contact", done: true, score: 100 },
@@ -108,3 +104,5 @@ function ResumePage() {
     </div>
   );
 }
+
+export default ResumePage;

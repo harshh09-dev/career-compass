@@ -1,10 +1,6 @@
-import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { LayoutDashboard, Users, GitBranch, CreditCard, FileEdit, ShieldCheck, ArrowLeft, Bell } from "lucide-react";
 
-export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin Console — S.Nehra" }] }),
-  component: AdminLayout,
-});
 
 const adminNav = [
   { to: "/admin", label: "Overview", icon: LayoutDashboard },
@@ -16,7 +12,7 @@ const adminNav = [
 ] as const;
 
 function AdminLayout() {
-  const path = useRouterState({ select: (s) => s.location.pathname });
+  const path = useLocation().pathname;
   return (
     <div className="min-h-screen bg-background">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 border-r border-[oklch(0_0_0/0.06)] bg-ink lg:flex lg:flex-col">
@@ -61,3 +57,5 @@ function AdminLayout() {
     </div>
   );
 }
+
+export default AdminLayout;

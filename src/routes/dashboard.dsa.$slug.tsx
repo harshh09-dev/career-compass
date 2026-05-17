@@ -1,26 +1,8 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { ArrowLeft, BookOpen, Youtube, Code2, Bookmark, Play, Pause, RotateCcw, Building2, Tag, CheckCircle2 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { findProblem } from "@/lib/dsa-data";
-
-export const Route = createFileRoute("/dashboard/dsa/$slug")({
-  loader: ({ params }) => {
-    const found = findProblem(params.slug);
-    if (!found) throw notFound();
-    return found;
-  },
-  head: ({ loaderData }) => ({
-    meta: [{ title: loaderData ? `${loaderData.problem.title} — DSA` : "Problem" }],
-  }),
-  component: ProblemPage,
-  notFoundComponent: () => (
-    <div className="mx-auto max-w-2xl py-20 text-center">
-      <h1 className="font-display text-display-md">Problem not found</h1>
-      <Link to="/dashboard/dsa" className="mt-6 inline-block text-sm text-ink hover:underline">← Back to DSA Sheet</Link>
-    </div>
-  ),
-});
 
 const levelPill: Record<string, string> = {
   Easy: "bg-success/10 text-success border-success/20",
@@ -29,7 +11,10 @@ const levelPill: Record<string, string> = {
 };
 
 function ProblemPage() {
-  const { problem, day } = Route.useLoaderData();
+  const { slug } = useParams<{ slug: string }>();
+  const found = slug ? findProblem(slug) : null;
+  if (!found) return <Navigate to="/dashboard/dsa" replace />;
+  const { problem, day } = found;
   const [solved, setSolved] = useState(false);
   const [saved, setSaved] = useState(false);
   const [running, setRunning] = useState(false);
@@ -154,3 +139,5 @@ function ProblemPage() {
     </div>
   );
 }
+
+export default ProblemPage;

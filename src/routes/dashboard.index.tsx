@@ -1,10 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, TrendingUp, Calendar, CheckCircle2, Clock } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 
-export const Route = createFileRoute("/dashboard/")({
-  component: Overview,
-});
 
 const stats = [
   { l: "Program Progress", v: "62%", d: "Week 7 of 12", icon: TrendingUp },
@@ -190,3 +187,5 @@ function Overview() {
     </div>
   );
 }
+
+export default Overview;

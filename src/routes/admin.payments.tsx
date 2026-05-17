@@ -1,11 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { Download, RefreshCcw } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 
-export const Route = createFileRoute("/admin/payments")({
-  head: () => ({ meta: [{ title: "Payments — Admin" }] }),
-  component: AdminPayments,
-});
 
 const txns = [
   { ref: "TXN1755012003", c: "Aarav Kapoor", inv: "INV-2025-014", amt: 29500, m: "Card", s: "Success", d: "12 Aug · 11:42" },
@@ -78,3 +74,5 @@ function AdminPayments() {
     </div>
   );
 }
+
+export default AdminPayments;

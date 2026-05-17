@@ -1,10 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { Reveal } from "@/components/reveal";
 
-export const Route = createFileRoute("/admin/pipeline")({
-  head: () => ({ meta: [{ title: "Pipeline — Admin" }] }),
-  component: PipelinePage,
-});
 
 const columns = [
   { k: "Application", count: 24, items: [
@@ -65,3 +61,5 @@ function PipelinePage() {
     </div>
   );
 }
+
+export default PipelinePage;
