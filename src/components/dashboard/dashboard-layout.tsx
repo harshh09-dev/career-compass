@@ -1,4 +1,4 @@
-import { Link, Outlet, useRouterState } from "@tanstack/react-router";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import {
   LayoutGrid, GraduationCap, MessagesSquare, Briefcase, FileText,
