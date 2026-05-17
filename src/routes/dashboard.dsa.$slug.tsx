@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { ArrowLeft, BookOpen, Youtube, Code2, Bookmark, Play, Pause, RotateCcw, Building2, Tag, CheckCircle2 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { findProblem } from "@/lib/dsa-data";
-
 
 const levelPill: Record<string, string> = {
   Easy: "bg-success/10 text-success border-success/20",
@@ -12,7 +11,10 @@ const levelPill: Record<string, string> = {
 };
 
 function ProblemPage() {
-  const { problem, day } = Route.useLoaderData();
+  const { slug } = useParams<{ slug: string }>();
+  const found = slug ? findProblem(slug) : null;
+  if (!found) return <Navigate to="/dashboard/dsa" replace />;
+  const { problem, day } = found;
   const [solved, setSolved] = useState(false);
   const [saved, setSaved] = useState(false);
   const [running, setRunning] = useState(false);

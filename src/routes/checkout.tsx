@@ -29,7 +29,7 @@ function CheckoutPage() {
     setSubmitting(true);
     setTimeout(() => {
       const seed = Math.random();
-      if (seed < 0.7) nav({ to: "/checkout/success", search: { ref: "TXN" + Date.now() } as never });
+      if (seed < 0.7) nav("/checkout/success?ref=" + encodeURIComponent("TXN" + Date.now()));
       else if (seed < 0.9) nav("/checkout/pending");
       else nav("/checkout/failed");
     }, 1400);

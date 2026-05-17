@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { CheckCircle2, Download, ArrowRight, Sparkles } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
-
 function SuccessPage() {
-  const { ref } = Route.useSearch();
+  const [params] = useSearchParams();
+  const ref = params.get("ref") || "TXN" + Date.now();
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-20">
