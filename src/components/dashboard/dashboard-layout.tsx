@@ -21,7 +21,7 @@ const nav = [
 
 export function DashboardLayout() {
   const [open, setOpen] = useState(false);
-  const path = useRouterState({ select: (s) => s.location.pathname });
+  const path = useLocation().pathname;
 
   return (
     <div className="min-h-screen bg-background">

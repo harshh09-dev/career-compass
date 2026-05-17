@@ -1,5 +1,5 @@
 import { ArrowUpRight, Sparkles, CheckCircle2, TrendingUp, Users, Shield } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Reveal } from "../reveal";
 
