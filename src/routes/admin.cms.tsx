@@ -1,8 +1,12 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { FileEdit, Save, Plus, Trash2, GripVertical } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
+export const Route = createFileRoute("/admin/cms")({
+  head: () => ({ meta: [{ title: "CMS — Admin" }] }),
+  component: CMSPage,
+});
 
 type Tab = "landing" | "faq" | "testimonials" | "pricing";
 
@@ -176,5 +180,3 @@ function PricingEditor() {
     </div>
   );
 }
-
-export default CMSPage;

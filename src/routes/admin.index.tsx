@@ -1,7 +1,11 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { TrendingUp, Users, IndianRupee, Briefcase, CheckCircle2, AlertOctagon, ArrowUpRight } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 
+export const Route = createFileRoute("/admin/")({
+  head: () => ({ meta: [{ title: "Admin Overview — S.Nehra" }] }),
+  component: AdminOverview,
+});
 
 function AdminOverview() {
   return (
@@ -89,5 +93,3 @@ function AdminOverview() {
     </div>
   );
 }
-
-export default AdminOverview;

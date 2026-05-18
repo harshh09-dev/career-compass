@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AlertOctagon, RotateCw, MessageCircle } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
+export const Route = createFileRoute("/checkout/failed")({
+  head: () => ({ meta: [{ title: "Payment Failed — S.Nehra" }] }),
+  component: FailedPage,
+});
 
 function FailedPage() {
   return (
@@ -40,5 +44,3 @@ function FailedPage() {
     </div>
   );
 }
-
-export default FailedPage;

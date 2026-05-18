@@ -1,8 +1,12 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/reveal";
 import { useState } from "react";
 import { Bell, Shield, CreditCard, Trash2, Mail } from "lucide-react";
 
+export const Route = createFileRoute("/dashboard/settings")({
+  head: () => ({ meta: [{ title: "Settings — S.Nehra" }] }),
+  component: SettingsPage,
+});
 
 const tabs = [
   { id: "account", l: "Account", icon: Shield },
@@ -144,5 +148,3 @@ function Toggle({ l, d, defaultOn }: { l: string; d: string; defaultOn?: boolean
     </div>
   );
 }
-
-export default SettingsPage;

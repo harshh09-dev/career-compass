@@ -1,8 +1,17 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
 
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: "About — S.Nehra" },
+      { name: "description", content: "We're a small team of operators-turned-mentors building the placement consultancy we wish existed when we graduated." },
+    ],
+  }),
+  component: About,
+});
 
 function About() {
   return (
@@ -37,5 +46,3 @@ function About() {
     </div>
   );
 }
-
-export default About;

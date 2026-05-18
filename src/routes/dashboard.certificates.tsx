@@ -1,7 +1,11 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { Award, Download, Lock, ExternalLink } from "lucide-react";
 
+export const Route = createFileRoute("/dashboard/certificates")({
+  head: () => ({ meta: [{ title: "Certificates — S.Nehra" }] }),
+  component: CertsPage,
+});
 
 const certs = [
   { t: "Modern Sales Foundations", id: "SN-2024-001432", date: "Jul 2024", status: "issued" },
@@ -55,5 +59,3 @@ function CertsPage() {
     </div>
   );
 }
-
-export default CertsPage;

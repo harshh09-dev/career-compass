@@ -1,8 +1,12 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { Building2, MapPin, Calendar, ArrowUpRight, Filter, TrendingUp } from "lucide-react";
 import { useState } from "react";
 
+export const Route = createFileRoute("/dashboard/jobs")({
+  head: () => ({ meta: [{ title: "Job Applications — S.Nehra" }] }),
+  component: JobsPage,
+});
 
 type Stage = "applied" | "screen" | "interview" | "offer" | "rejected";
 
@@ -125,5 +129,3 @@ function JobsPage() {
     </div>
   );
 }
-
-export default JobsPage;

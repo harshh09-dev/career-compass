@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import {
   Flame, CalendarDays, Users, Bookmark, BookOpen, Youtube, Code2, Search,
@@ -7,6 +7,10 @@ import {
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { days, allCompanies, counts, type Level } from "@/lib/dsa-data";
 
+export const Route = createFileRoute("/dashboard/dsa")({
+  head: () => ({ meta: [{ title: "DSA Sheet — S.Nehra" }] }),
+  component: DSAPage,
+});
 
 const levelPill: Record<Level, string> = {
   Easy: "bg-success/10 text-success border-success/20",
@@ -277,7 +281,7 @@ function DSAPage() {
                                       />
                                     </td>
                                     <td className="px-4 py-3">
-                                      <Link to={`/dashboard/dsa/${p.slug}`} className="font-medium text-ink hover:underline">
+                                      <Link to="/dashboard/dsa/$slug" params={{ slug: p.slug }} className="font-medium text-ink hover:underline">
                                         {p.title}
                                       </Link>
                                       <div className="mt-0.5 flex flex-wrap gap-1">
@@ -287,7 +291,7 @@ function DSAPage() {
                                       </div>
                                     </td>
                                     <td className="px-4 py-3 text-center">
-                                      <Link to={`/dashboard/dsa/${p.slug}`} className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border hover:bg-muted">
+                                      <Link to="/dashboard/dsa/$slug" params={{ slug: p.slug }} className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border hover:bg-muted">
                                         <BookOpen className="h-3.5 w-3.5 text-ink" />
                                       </Link>
                                     </td>
@@ -443,7 +447,7 @@ function SavedView({
                     className={`h-4 w-4 shrink-0 rounded-full border-2 ${solved.has(p.id) ? "border-success bg-success" : "border-border"}`}
                   />
                   <div>
-                    <Link to={`/dashboard/dsa/${p.slug}`} className="font-medium text-ink hover:underline">{p.title}</Link>
+                    <Link to="/dashboard/dsa/$slug" params={{ slug: p.slug }} className="font-medium text-ink hover:underline">{p.title}</Link>
                     <div className="mt-0.5 text-xs text-muted-foreground">Day {day} · {topic} · {p.companies.slice(0, 3).join(", ")}</div>
                   </div>
                 </div>
@@ -459,5 +463,3 @@ function SavedView({
     </Reveal>
   );
 }
-
-export default DSAPage;

@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { AuthShell } from "@/components/auth/auth-shell";
 
+export const Route = createFileRoute("/verify")({
+  head: () => ({ meta: [{ title: "Verify email — S.Nehra" }] }),
+  component: Verify,
+});
 
 function Verify() {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
@@ -57,5 +61,3 @@ function Verify() {
     </AuthShell>
   );
 }
-
-export default Verify;

@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { AuthShell, AuthField } from "@/components/auth/auth-shell";
 
+export const Route = createFileRoute("/signup")({
+  head: () => ({ meta: [{ title: "Create account — S.Nehra" }] }),
+  component: Signup,
+});
 
 function strength(p: string) {
   let s = 0;
@@ -62,5 +66,3 @@ function Signup() {
     </AuthShell>
   );
 }
-
-export default Signup;

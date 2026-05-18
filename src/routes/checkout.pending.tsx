@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock3, RefreshCw } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
+export const Route = createFileRoute("/checkout/pending")({
+  head: () => ({ meta: [{ title: "Payment Processing — S.Nehra" }] }),
+  component: PendingPage,
+});
 
 function PendingPage() {
   return (
@@ -38,5 +42,3 @@ function PendingPage() {
     </div>
   );
 }
-
-export default PendingPage;

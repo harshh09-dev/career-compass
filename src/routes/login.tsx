@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AuthShell, AuthField } from "@/components/auth/auth-shell";
 
+export const Route = createFileRoute("/login")({
+  head: () => ({ meta: [{ title: "Sign in — S.Nehra" }] }),
+  component: Login,
+});
 
 function Login() {
   return (
@@ -39,5 +43,3 @@ function Login() {
     </AuthShell>
   );
 }
-
-export default Login;

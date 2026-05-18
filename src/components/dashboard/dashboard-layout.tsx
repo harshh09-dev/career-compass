@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   LayoutGrid, GraduationCap, MessagesSquare, Briefcase, FileText,
@@ -21,7 +21,7 @@ const nav = [
 
 export function DashboardLayout() {
   const [open, setOpen] = useState(false);
-  const path = useLocation().pathname;
+  const path = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <div className="min-h-screen bg-background">

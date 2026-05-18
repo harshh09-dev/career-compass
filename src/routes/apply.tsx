@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Upload, BarChart3, Headphones } from "lucide-react";
 
+export const Route = createFileRoute("/apply")({
+  head: () => ({ meta: [{ title: "Apply — S.Nehra" }] }),
+  component: Apply,
+});
 
 const steps = ["Basics", "Track", "Education", "Experience", "Goals", "Resume", "Done"];
 
@@ -211,5 +215,3 @@ function TrackCard({ active, onClick, icon: Icon, title, desc }: { active: boole
     </button>
   );
 }
-
-export default Apply;

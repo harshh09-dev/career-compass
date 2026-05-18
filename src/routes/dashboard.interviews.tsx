@@ -1,7 +1,11 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { Calendar, Video, Star, MessagesSquare, ArrowUpRight, Clock } from "lucide-react";
 
+export const Route = createFileRoute("/dashboard/interviews")({
+  head: () => ({ meta: [{ title: "Mock Interviews — S.Nehra" }] }),
+  component: InterviewsPage,
+});
 
 const upcoming = [
   { co: "Postman", role: "AE — Round 2", when: "Thu, 14 Aug · 11:00 AM", mentor: "Priya M.", type: "real" },
@@ -101,5 +105,3 @@ function InterviewsPage() {
     </div>
   );
 }
-
-export default InterviewsPage;

@@ -1,7 +1,11 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { Shield, UserPlus, Trash2 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
+export const Route = createFileRoute("/admin/roles")({
+  head: () => ({ meta: [{ title: "Roles & Access — Admin" }] }),
+  component: RolesPage,
+});
 
 const team = [
   { n: "Sahil Nehra", e: "sahil@snehra.io", role: "Owner", last: "Active now" },
@@ -94,5 +98,3 @@ function RolesPage() {
     </div>
   );
 }
-
-export default RolesPage;

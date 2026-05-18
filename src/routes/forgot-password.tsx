@@ -1,29 +1,20 @@
-import { Link } from "react-router-dom";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AuthShell, AuthField } from "@/components/auth/auth-shell";
 
-export default function ForgotPasswordPage() {
-  return (
+export const Route = createFileRoute("/forgot-password")({
+  head: () => ({ meta: [{ title: "Reset password — S.Nehra" }] }),
+  component: () => (
     <AuthShell
-      title="Reset your password"
-      subtitle="Enter the email tied to your S.Nehra account. We'll send a secure link to choose a new password."
-      footer={
-        <>
-          Remembered it?{" "}
-          <Link to="/login" className="text-ink underline-offset-4 hover:underline">
-            Back to sign in
-          </Link>
-        </>
-      }
+      title="Reset your password."
+      subtitle="Enter your email and we'll send a secure recovery link."
+      footer={<>Remembered it? <Link to="/login" className="font-medium text-ink hover:text-gold">Back to sign in</Link></>}
     >
       <form className="space-y-5">
-        <AuthField label="Work email" type="email" placeholder="jane@company.com" />
-        <button
-          type="submit"
-          className="w-full rounded-[14px] bg-ink px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-ink/90"
-        >
-          Send reset link
+        <AuthField label="Email" type="email" placeholder="you@example.com" />
+        <button className="w-full rounded-[14px] bg-ink px-6 py-3.5 text-sm font-medium text-primary-foreground transition-all hover:bg-ink/90 hover:shadow-gold">
+          Send recovery link
         </button>
       </form>
     </AuthShell>
-  );
-}
+  ),
+});

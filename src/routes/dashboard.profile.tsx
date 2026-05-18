@@ -1,7 +1,11 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { Camera, Linkedin, Github, Globe, MapPin } from "lucide-react";
 
+export const Route = createFileRoute("/dashboard/profile")({
+  head: () => ({ meta: [{ title: "Profile — S.Nehra" }] }),
+  component: ProfilePage,
+});
 
 const fields = [
   { l: "Full name", v: "Jane Doe", k: "name" },
@@ -97,5 +101,3 @@ function ProfilePage() {
     </div>
   );
 }
-
-export default ProfilePage;

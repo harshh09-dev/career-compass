@@ -1,8 +1,12 @@
-
+import { createFileRoute } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { Search, Download, Filter } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
+export const Route = createFileRoute("/admin/candidates")({
+  head: () => ({ meta: [{ title: "Candidates — Admin" }] }),
+  component: CandidatesPage,
+});
 
 const candidates = [
   { id: "C-1041", name: "Aarav Kapoor", track: "Sales", stage: "Offer", ctc: "₹22 LPA", company: "Razorpay", payment: "Paid", risk: "Low" },
@@ -99,5 +103,3 @@ function CandidatesPage() {
     </div>
   );
 }
-
-export default CandidatesPage;
